@@ -1,14 +1,15 @@
 <h1>Listings#index</h1>
 
 <% @listings.each do |x| %>
-
-	Title: <%= x.title %>
-	Description: <%= x.description %>
-
+	<p>
+	Title: <%= x.title %><br>
+	Description: <%= x.description %><br>
+	Tags: <%=raw x.tags.map(&:name).map {|t| link_to t, tag_path(t)}.join(",") %><br>
+	
 	<% if x.user != current_user %>
 		<%= link_to 'Reserve This' %>
 	<% end %>
-
+	</p>
 <% end %>
 
 <p>

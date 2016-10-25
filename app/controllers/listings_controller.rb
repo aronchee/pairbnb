@@ -18,7 +18,12 @@ class ListingsController < ApplicationController
   end
 
   def index
-    @listings = Listing.all
+    # @listings = Listing.all
+    if params[:tag] #to do tag based search
+      @listings = Listing.tagged_with(params[:tag])
+    else
+      @listings = Listing.all
+    end
   end
 
   def show
@@ -54,7 +59,7 @@ class ListingsController < ApplicationController
 
   def listing_params
     # byebug
-    params.require(:listing).permit(:title, :description)
+    params.require(:listing).permit(:title, :description, :all_tags)
   end
 
 end

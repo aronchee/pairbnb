@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get '/profile', to: "listings#profile", as: 'myprofile'
 
+  get 'tags/:tag', to: "listings#index", as: 'tag'
+
   get 'users/show'
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
