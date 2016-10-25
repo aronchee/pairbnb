@@ -3,7 +3,9 @@
 
 <body>
     <% if signed_in? %>
-      Signed in as: <%= current_user.email %>
+      Signed in as: <%= current_user.email %><br>
+      <%= link_to 'Create New Listing', new_listing_path %>
+      <%= link_to 'My Listings', myprofile_path %>
       <%= button_to 'Sign out', sign_out_path, method: :delete %>
     <% else %>
       <%= link_to 'Sign in', sign_in_path %>
@@ -17,4 +19,5 @@
     </div>
 </body>
 
+<%= link_to 'All Listings', listings_path %><br>
 <%= link_to 'welcome_pages_help', welcome_pages_help_path %>

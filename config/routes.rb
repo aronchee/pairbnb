@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  resources :listings
+
+  get '/profile', to: "listings#profile", as: 'myprofile'
+
   get 'users/show'
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]

@@ -1,0 +1,16 @@
+<h1>Listings#index</h1>
+
+<% @listings.each do |x| %>
+
+	Title: <%= x.title %>
+	Description: <%= x.description %>
+
+	<% if x.user != current_user %>
+		<%= link_to 'Reserve This' %>
+	<% end %>
+
+<% end %>
+
+<p>
+<%= link_to 'Home', welcome_pages_home_path %>
+</p>
