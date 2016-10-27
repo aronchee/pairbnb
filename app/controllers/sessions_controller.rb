@@ -1,3 +1,5 @@
+class SessionsController < ApplicationController
+
  def create_from_omniauth
     auth_hash = request.env["omniauth.auth"]
 
@@ -14,4 +16,5 @@
     end
     sign_in(user)
     redirect_to @next, :notice => @notice
+  end
 end

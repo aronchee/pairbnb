@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
-  def profile
-    @my_listings = current_user.listings
-  end
+  # def profile
+  #   @my_listings = current_user.listings
+  # end
 
   def new
     @listing = Listing.new
