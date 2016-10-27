@@ -1,9 +1,40 @@
 Rails.application.routes.draw do
+
+
+  get '/profile', to: "listings#profile", as: 'myprofile'
+
+  get 'tags/:tag', to: "listings#index", as: 'tag'
+
+  resources :passwords, controller: "clearance/passwords", only: [:create, :new]
+  resource :session, controller: "clearance/sessions", only: [:create]
+
+  resources :users, controller: "clearance/users", only: [:create] do
+    resource :password,
+      controller: "clearance/passwords",
+      only: [:create, :edit, :update]
+  end
+
+  get "/sign_in" => "clearance/sessions#new", as: "sign_in"
+  delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
+  get "/sign_up" => "clearance/users#new", as: "sign_up"
+
+  resources :users, controller: "users", only: :show
+  get "/auth/:provider/callback" => "sessions#create_from_omniauth"
+
   get 'welcome_pages/home'
-
   get 'welcome_pages/help'
-
   root 'welcome_pages#home'
+
+
+  resources :listings do
+    resources :reservations
+  end
+
+  resources :users, only: [:show, :edit, :update, :destroy]  do 
+    resources :reservations
+  end
+
+  get 'users/show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

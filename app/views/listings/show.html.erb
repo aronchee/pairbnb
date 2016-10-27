@@ -1,0 +1,9 @@
+<h1>Listings#show</h1>
+
+<p>Title: <%= @listing.title %></p>
+<p>Description: <%= @listing.description %></p>
+<p>Tags: <%= @listing.all_tags %></p>
+
+<%= link_to 'Home', welcome_pages_home_path %> 
+<%= link_to 'All Listings', listings_path %>
+<%= link_to "My Profile", user_path(current_user) %>

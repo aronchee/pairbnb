@@ -1,0 +1,31 @@
+<h1>Hello <%= @user.name %></h1>
+
+<p><strong>Room Listings</strong></p>
+<p>
+<% @listings.each do |l| %>
+
+	<p>
+	Room Title:&nbsp;<%= l.title %><br>
+	Description:&nbsp;<%= l.description %><br>
+	Tags:&nbsp;<%= l.all_tags %><br>
+
+	<%= link_to 'Show Reserved Lists', listing_reservations_path(l) %>
+	<%= link_to 'Edit', edit_listing_path(l) %>
+	<%= link_to 'Delete', listing_path(l), method: :delete %><br>
+	</p>
+
+<% end %>
+</p>
+
+<p><strong>Reservation Lists</strong></p>
+<% @reservations.each do |r| %>
+	
+	<p>
+	Room Title:&nbsp;<%= r.listing.title %><br>
+	CheckIn Date:&nbsp;<%= r.check_in %><br>
+	CheckOut Date:&nbsp;<%= r.check_out %><br>
+	</p>
+
+<% end %>
+
+<%= link_to 'Home', welcome_pages_home_path %>

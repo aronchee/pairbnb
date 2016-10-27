@@ -1,0 +1,21 @@
+<h1>Listings#index</h1>
+
+<p>
+<%= link_to 'Home', welcome_pages_home_path %>
+</p>
+
+
+<% @listings.each do |x| %>
+	<p>
+	Title: <%= x.title %><br>
+	Description: <%= x.description %><br>
+	Tags: <%=raw x.tags.map(&:name).map {|t| link_to t, tag_path(t)}.join(",") %><br>
+	
+	<% if x.user != current_user %>
+		<%= link_to 'Reserve This', new_listing_reservation_path(x) %>
+	<% end %>
+	</p>
+
+<% end %>
+
+<%= will_paginate %>
