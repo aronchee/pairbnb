@@ -26,3 +26,5 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+This will be my first web app although it is not completely perfect but I did most of the required function I have in mind.
