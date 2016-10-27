@@ -4,6 +4,7 @@
 <%= link_to 'Home', welcome_pages_home_path %>
 </p>
 
+
 <% @listings.each do |x| %>
 	<p>
 	Title: <%= x.title %><br>
@@ -14,4 +15,7 @@
 		<%= link_to 'Reserve This', new_listing_reservation_path(x) %>
 	<% end %>
 	</p>
+
 <% end %>
+
+<%= will_paginate %>

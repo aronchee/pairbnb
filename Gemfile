@@ -50,3 +50,6 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'clearance'
 gem 'figaro'
+
+gem 'will_paginate', '3.1.0'
+gem 'bootstrap-will_paginate', '0.0.10'

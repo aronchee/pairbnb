@@ -17,11 +17,11 @@ class ListingsController < ApplicationController
   end
 
   def index
-    # @listings = Listing.all
+    # @listings = Listing.page(params[:page]).order('created_at DESC').per_page(3)
     if params[:tag] #to do tag based search
-      @listings = Listing.tagged_with(params[:tag])
+      @listings = Listing.tagged_with(params[:tag]).page(params[:page]).order('created_at DESC').per_page(3)
     else
-      @listings = Listing.all
+      @listings = Listing.page(params[:page]).order('created_at DESC').per_page(3)
     end
   end
 
