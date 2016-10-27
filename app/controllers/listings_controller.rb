@@ -1,5 +1,4 @@
 class ListingsController < ApplicationController
-
   def profile
     @my_listings = current_user.listings
   end
@@ -52,7 +51,7 @@ class ListingsController < ApplicationController
   def destroy
     @listing = Listing.find(params[:id])
     @listing.destroy
-    redirect_to myprofile_path
+    redirect_to user_path(current_user)
   end
 
   private
@@ -61,5 +60,4 @@ class ListingsController < ApplicationController
     # byebug
     params.require(:listing).permit(:title, :description, :all_tags)
   end
-
 end

@@ -1,0 +1,13 @@
+<h1>All Reservations for Listing: <%= @listing.title %></h1>
+
+
+<% @reservations.each do |reservation| %>
+	<p>
+	Book by: <%= reservation.user.name %><br>
+	CheckIn Date: <%= reservation.check_in %>&nbsp; |&nbsp; CheckOut Date: <%= reservation.check_out %>
+	</p>
+<% end %> 
+
+<%= link_to "My Profile", user_path(current_user) %>
+
+<%= link_to 'All Listings', listings_path %>

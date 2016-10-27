@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :listings
 
   get '/profile', to: "listings#profile", as: 'myprofile'
 
   get 'tags/:tag', to: "listings#index", as: 'tag'
-
-  get 'users/show'
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
@@ -27,6 +24,17 @@ Rails.application.routes.draw do
   get 'welcome_pages/home'
   get 'welcome_pages/help'
   root 'welcome_pages#home'
+
+
+  resources :listings do
+    resources :reservations
+  end
+
+  resources :users, only: [:show, :edit, :update, :destroy]  do 
+    resources :reservations
+  end
+
+  get 'users/show'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,5 @@
+<% @listing = Listing.find(params[:listing_id]) %>
+
+<h1>Reservation for <%= @listing.title %></h1>
+
+<%= render 'reservation_form' %>
